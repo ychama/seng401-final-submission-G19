@@ -1,0 +1,67 @@
+apply plugin: 'android'
+//apply plugin: 'crashlytics'
+
+repositories {
+    maven { url 'https://github.com/AfzalivE/my-mvn-repo/raw/master/' }
+    maven { url 'http://download.crashlytics.com/maven' }
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:19.0.+'
+    compile 'com.android.support:appcompat-v7:19.0.+'
+    compile 'com.jeremyfeinstein:slidingmenu:1.3-SNAPSHOT'
+    compile 'com.loopj.android:android-async-http:1.4.4'
+    compile 'de.keyboardsurfer:crouton:1.8.1'
+    compile 'com.github.chrisbanes.photoview:library:1.2.2'
+    compile 'com.crashlytics.android:crashlytics:1.+'
+    compile 'com.koushikdutta.ion:ion:1.2.4'
+
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+}
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+
+    compileSdkVersion 19
+    buildToolsVersion '19.0.3'
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 19
+        versionCode 13
+        versionName "1.0.6"
+    }
+
+    signingConfigs {
+        release {
+            def Properties keyProps = new Properties()
+            File keyProperties = file('../keystore.properties')
+            if (keyProperties.exists()) {
+                keyProps.load(new FileInputStream(keyProperties))
+
+                storeFile file(keyProps['store'])
+                keyAlias keyProps['alias']
+                storePassword keyProps['storePass']
+                keyPassword keyProps['pass']
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+//            buildConfigField "String", "BASE_URI", "\"http://www.macinsiders.com/chat/?ajax=true&channelID=500006296\";"
+            buildConfigField "Boolean", "DEBUG_BUILD", "true";
+            buildConfigField "String", "BASE_URI", "\"http://www.macinsiders.com/chat/?ajax=true\";"
+        }
+        release {
+            buildConfigField "Boolean", "DEBUG_BUILD", "false";
+            buildConfigField "String", "BASE_URI", "\"http://www.macinsiders.com/chat/?ajax=true\";"
+            signingConfig signingConfigs.release
+
+        }
+    }
+}
