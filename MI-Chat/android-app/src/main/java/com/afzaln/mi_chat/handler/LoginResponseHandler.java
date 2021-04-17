@@ -3,8 +3,7 @@ package com.afzaln.mi_chat.handler;
 import android.content.Intent;
 import android.util.Log;
 
-import com.afzaln.mi_chat.activity.LoginActivity;
-import com.afzaln.mi_chat.activity.MessagesActivity;
+import com.afzaln.mi_chat.activity.ActivityFactory;
 import com.afzaln.mi_chat.utils.PrefUtils;
 import com.loopj.android.http.TextHttpResponseHandler;
 
@@ -19,9 +18,10 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 public class LoginResponseHandler extends TextHttpResponseHandler {
 
     private static final String TAG = LoginResponseHandler.class.getSimpleName();
-    LoginActivity mActivity;
+    Activity mActivity;
+    public ActivityFactory af = new ActivityFactory(); 
 
-    public LoginResponseHandler(LoginActivity activity) {
+    public LoginResponseHandler(Activity activity) {
         mActivity = activity;
     }
 
@@ -34,7 +34,7 @@ public class LoginResponseHandler extends TextHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, String response) {
         if (PrefUtils.authCookieExists(mActivity)) {
-            Intent i = new Intent(mActivity, MessagesActivity.class);
+            Intent i = new Intent(mActivity, af.getActivity("messages"));
             mActivity.finish();
             mActivity.startActivity(i);
         } else {
