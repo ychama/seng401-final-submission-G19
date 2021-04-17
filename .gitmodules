@@ -1,6 +1,0 @@
-[submodule "chatterbot"]
-	path = chatterbot
-	url = https://github.com/martinbigio/chatterbot.git
-[submodule "MI-Chat"]
-	path = MI-Chat
-	url = https://github.com/AfzalivE/MI-Chat.git
