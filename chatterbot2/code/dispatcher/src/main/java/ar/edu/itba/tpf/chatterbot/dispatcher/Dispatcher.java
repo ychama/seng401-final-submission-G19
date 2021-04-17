@@ -59,7 +59,7 @@ public class Dispatcher {
         timeoutThread = new Thread(new Runnable() {
             public void run() {
                 while (true) {
-                    
+
                     logger.debug("Verificando conversaciones terminadas.");
                     GregorianCalendar calendar = new GregorianCalendar();
                     calendar.setTime(new Date());
@@ -97,14 +97,14 @@ public class Dispatcher {
         timeoutThread.start();
 
     }
-    
+
     public void destroy() {
         timeoutThread.interrupt();
     }
 
     /**
      * Establece el <code>JabberClient</code> a utilizar y registra un listener para los mensajes recibidos.
-     * 
+     *
      * @param jabberClient Cliente Jabber para enviar y recibir mensajes XMPP.
      */
     public void setJabberClient(JabberClient jabberClient) {
@@ -121,7 +121,7 @@ public class Dispatcher {
                 if (message.trim().length() == 0) {
                     return;
                 }
-                
+
                 /*
                  * Si no hay servidores disponibles, responder mensaje de error al usuario.
                  */
@@ -171,7 +171,7 @@ public class Dispatcher {
 
     /**
      * Agrega un servidor para ser utilizado en el dispatching.
-     * 
+     *
      * @param server Servidor a ser agregado.
      */
     public void addServer(ServerState server) {
@@ -180,7 +180,7 @@ public class Dispatcher {
 
     /**
      * Elimina un servidor de la lista disponible para dispatching.
-     * 
+     *
      * @param server Servidor a ser eliminado.
      */
     public void removeServer(ServerState server) {
@@ -226,7 +226,7 @@ public class Dispatcher {
     /**
      * Obtiene el servidor y la referencia a la queue para un determinado usuario. Si no tiene asociado ningún servidor,
      * le asocia uno, y lo retorna.
-     * 
+     *
      * @param user Remitente del mensaje.
      * @return Servidor y template de jms para enviarle mensajes.
      */
@@ -260,9 +260,20 @@ public class Dispatcher {
                 }
 
                 /*
-                 * Asignar el cliente al servidor.
-                 */
-                c = new ClientState(bestServer);
+                * Added code for prototype design pattern
+                */
+                if (clients.size() > 0) {
+
+                  Iterator<String> iterator = clients.keySet().iterator();
+                  String key = iterator.next();
+
+                  c = clients.get(key).clone();
+                  c.setServerState(bestServer);
+                }
+                else {
+                  c = new ClientState(bestServer);
+                }
+
                 clients.put(user, c);
                 bestServer.incrementChatterbotCount();
             } else {
