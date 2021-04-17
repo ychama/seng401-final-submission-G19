@@ -56,6 +56,7 @@ public class MessagesActivity extends BaseActivity implements LoaderManager.Load
     private static final int MESSAGE_LOADER = 0;
     private static final String TAG = MessagesActivity.class.getSimpleName();
 
+
     private boolean mManualRefresh = false;
     private MessagesCursorAdapter mAdapter;
     private MessageListView mListView;
@@ -71,6 +72,10 @@ public class MessagesActivity extends BaseActivity implements LoaderManager.Load
     private AlarmManager mAlarmManager;
     private PendingIntent mPendingIntent;
     private LogoutResponseHandler mLogoutResponseHandler = new LogoutResponseHandler(MessagesActivity.this);
+
+
+
+
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
