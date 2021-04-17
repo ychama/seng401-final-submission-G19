@@ -3,6 +3,7 @@ package com.afzaln.mi_chat.handler;
 import android.content.Intent;
 import android.util.Log;
 
+import android.app.Activity;
 import com.afzaln.mi_chat.activity.ActivityFactory;
 import com.afzaln.mi_chat.utils.PrefUtils;
 import com.loopj.android.http.TextHttpResponseHandler;
