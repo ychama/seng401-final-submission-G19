@@ -1,0 +1,22 @@
+<resources>
+    <color name="mi_maroon_darkest">#FF3F062A</color>
+    <color name="mi_maroon_darker">#FF650A43</color>
+    <color name="mi_maroon">#FF7F0D54</color>
+    <color name="mi_maroon_lighter">#FF943C73</color>
+    <color name="mi_maroon_lightest">#FFCB529E</color>
+
+    <color name="normal_text">#FF333333</color>
+    <color name="light_text">#FF777777</color>
+
+    <color name="admin_name">#FF8CB200</color>
+    <color name="mod_name">#FF0BC0CB</color>
+
+    <color name="bg">#FFE5E5E5</color>
+    <color name="alt_bg">@android:color/white</color>
+
+    <color name="pressed">#CC33B5E5</color>
+
+    <color name="ics_blue">#ff33b5e5</color>
+    <color name="ics_blue_dark">#ff0099cc</color>
+    <color name="ics_blue_semi">#6633b5e5</color>
+</resources>

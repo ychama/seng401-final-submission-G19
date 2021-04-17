@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.afzaln.mi_chat.view.MessageListView
+        tools:listitem="@layout/item_message"
+        android:id="@+id/messagelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:transcriptMode="disabled"
+        android:smoothScrollbar="false"
+        android:stackFromBottom="true"
+        android:fastScrollEnabled="true"
+        android:layout_marginBottom="1dip"
+        android:dividerHeight="8dp"
+        android:divider="@color/bg"
+        android:cacheColorHint="@android:color/white"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarStyle="insideOverlay"
+        android:paddingBottom="2dp"
+        android:drawSelectorOnTop="false"
+        android:clickable="true"
+        android:fadingEdge="vertical" />
+
+    <!-- Divider -->
+    <View
+        android:background="@color/alt_bg"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/options_panel"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/options_bold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:text="B"
+            android:textColor="#66FFFFFF"/>
+
+        <Button
+            android:id="@+id/options_italic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textStyle="italic"
+            android:textSize="16dp"
+            android:text="I"
+            android:textColor="#66FFFFFF"/>
+
+        <Button
+            android:id="@+id/options_underline"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:textSize="16dp"
+            android:text="U"
+            android:textColor="#66FFFFFF"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_panel"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/alt_bg">
+
+        <com.afzaln.mi_chat.view.ClearableEditText
+            android:textColor="@android:color/black"
+            android:id="@+id/text_editor"
+            android:layout_width="0dip"
+            android:layout_gravity="bottom"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dip"
+            android:autoText="true"
+            android:textSize="16sp"
+            android:capitalize="sentences"
+            android:nextFocusRight="@+id/submit_msg"
+            android:hint="@string/type_message_hint"
+            android:minHeight="48dip"
+            android:maxLines="3"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionSend|flagNoEnterAction"
+            android:maxLength="2000"
+            android:background="@drawable/edit_text_holo_light"
+            android:fontFamily="sans-serif-light"
+            android:nextFocusForward="@+id/submit_msg" />
+
+        <ImageButton
+            android:id="@+id/submit_img"
+            android:src="@drawable/ic_ab_up"
+            android:drawablePadding="0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dip"
+            android:contentDescription="@string/send_message"
+            android:nextFocusLeft="@id/text_editor"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/show_options"
+            android:src="@android:drawable/arrow_up_float"
+            android:drawablePadding="0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="4dip"
+            android:contentDescription="@string/show_options_panel"
+            android:nextFocusLeft="@id/text_editor" />
+
+        <ImageButton
+            android:id="@+id/submit_msg"
+            android:src="@drawable/send_button_selector"
+            android:drawablePadding="0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dip"
+            android:contentDescription="@string/send_message"
+            android:nextFocusLeft="@id/text_editor" />
+
+    </LinearLayout>
+</merge>
