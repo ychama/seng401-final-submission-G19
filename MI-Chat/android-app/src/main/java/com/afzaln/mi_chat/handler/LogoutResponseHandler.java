@@ -2,9 +2,8 @@ package com.afzaln.mi_chat.handler;
 
 import android.content.Intent;
 
-import android.app.Activity;
 import com.afzaln.mi_chat.activity.ActivityFactory;
-import com.afzaln.mi_chat.activity.MessagesActivity;
+import android.app.Activity;
 import com.afzaln.mi_chat.utils.NetUtils;
 import com.loopj.android.http.XmlHttpResponseHandler;
 
@@ -20,7 +19,7 @@ public class LogoutResponseHandler extends XmlHttpResponseHandler {
     Activity mActivity;
     // public ActivityFactory af;
 
-    public LogoutResponseHandler(MessagesActivity activity) {
+    public LogoutResponseHandler(Activity activity) {
         mActivity = activity;
         // af =  ActivityFactory.getInstance();
     }

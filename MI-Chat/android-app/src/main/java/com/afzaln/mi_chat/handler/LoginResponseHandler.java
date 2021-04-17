@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import android.app.Activity;
-import com.afzaln.mi_chat.activity.MessagesActivity;
+import com.afzaln.mi_chat.activity.ActivityFactory;
 import com.afzaln.mi_chat.utils.PrefUtils;
 import com.loopj.android.http.TextHttpResponseHandler;
 
@@ -22,7 +22,7 @@ public class LoginResponseHandler extends TextHttpResponseHandler {
     Activity mActivity;
     // private AbstractFactory af = new AbstractFactory();
 
-    public LoginResponseHandler(LoginActivity activity) {
+    public LoginResponseHandler(Activity activity) {
         mActivity = activity;
     }
 
