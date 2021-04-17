@@ -3,7 +3,7 @@ package com.afzaln.mi_chat.activity;
 import com.afzaln.mi_chat.activity.*;
 import android.app.Activity;
 
-public  class ActivityFactory implements FlyweightActivity {
+public  class ActivityFactory {
     private static HashMap <String, Activity> activityMap  = new HashMap<String, ActivityFactory>(); 
 
    public static Activity getActivity(String name){
