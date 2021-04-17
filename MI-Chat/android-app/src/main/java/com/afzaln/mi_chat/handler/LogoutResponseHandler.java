@@ -18,11 +18,11 @@ import org.w3c.dom.Node;
 public class LogoutResponseHandler extends XmlHttpResponseHandler {
 
     Activity mActivity;
-    public ActivityFactory af;
+    // public ActivityFactory af;
 
     public LogoutResponseHandler(MessagesActivity activity) {
         mActivity = activity;
-        af =  ActivityFactory.getInstance();
+        // af =  ActivityFactory.getInstance();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class LogoutResponseHandler extends XmlHttpResponseHandler {
         Node info = response.getElementsByTagName("info").item(0);
         if (info.getAttributes().getNamedItem("type").getNodeValue().equals("logout")) {
             NetUtils.getCookieStoreInstance(mActivity).clear();
-            Intent i = new Intent(mActivity, af.getActivity("login"));
+            Intent i = new Intent(mActivity, ActivityFactory.getActivity("login"));
             mActivity.finish();
             mActivity.startActivity(i);
         };

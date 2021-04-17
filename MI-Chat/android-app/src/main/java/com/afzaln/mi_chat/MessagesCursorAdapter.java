@@ -38,7 +38,7 @@ public class MessagesCursorAdapter extends CursorAdapter {
     private final int mAdminNameColor;
     private final int mModNameColor;
     private final int mUserameColor;
-    private ActivityFactory af = ActivityFactory.getInstance();
+    //private ActivityFactory af = ActivityFactory.getInstance();
 
     public MessagesCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
@@ -218,7 +218,7 @@ public class MessagesCursorAdapter extends CursorAdapter {
                         result.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(mContext, af.getActivity("image"));
+                                Intent intent = new Intent(mContext, ActivityFactory.getActivity("image"));
                                 Bundle extras = new Bundle();
                                 extras.putStringArray("imgLinksList", mImgLinksList);
                                 extras.putInt("imgIndex", imgIndex);

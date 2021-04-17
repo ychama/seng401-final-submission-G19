@@ -20,7 +20,7 @@ public class LoginResponseHandler extends TextHttpResponseHandler {
 
     private static final String TAG = LoginResponseHandler.class.getSimpleName();
     Activity mActivity;
-    private AbstractFactory af = new AbstractFactory();
+    // private AbstractFactory af = new AbstractFactory();
 
     public LoginResponseHandler(LoginActivity activity) {
         mActivity = activity;
@@ -35,7 +35,7 @@ public class LoginResponseHandler extends TextHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, String response) {
         if (PrefUtils.authCookieExists(mActivity)) {
-            Intent i = new Intent(mActivity, af.getActivity("messages"));
+            Intent i = new Intent(mActivity, ActivityFactory.getActivity("messages"));
             mActivity.finish();
             mActivity.startActivity(i);
         } else {
