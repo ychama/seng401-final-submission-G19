@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.ViewAnimator;
 
 import com.afzaln.mi_chat.R.color;
-import com.afzaln.mi_chat.activity.ImageActivity;
+import com.afzaln.mi_chat.activity.ActivityFactory;
 import com.afzaln.mi_chat.provider.ProviderContract.MessagesTable;
 import com.afzaln.mi_chat.resource.Message;
 import com.koushikdutta.async.future.FutureCallback;
@@ -38,6 +38,7 @@ public class MessagesCursorAdapter extends CursorAdapter {
     private final int mAdminNameColor;
     private final int mModNameColor;
     private final int mUserameColor;
+    private ActivityFactory af = ActivityFactory.getInstance();
 
     public MessagesCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
@@ -217,7 +218,7 @@ public class MessagesCursorAdapter extends CursorAdapter {
                         result.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(mContext, ImageActivity.class);
+                                Intent intent = new Intent(mContext, af.getActivity("image"));
                                 Bundle extras = new Bundle();
                                 extras.putStringArray("imgLinksList", mImgLinksList);
                                 extras.putInt("imgIndex", imgIndex);

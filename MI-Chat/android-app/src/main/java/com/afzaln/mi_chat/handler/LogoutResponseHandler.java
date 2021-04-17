@@ -2,7 +2,8 @@ package com.afzaln.mi_chat.handler;
 
 import android.content.Intent;
 
-import com.afzaln.mi_chat.activity.LoginActivity;
+import android.app.Activity;
+import com.afzaln.mi_chat.activity.ActivityFactory;
 import com.afzaln.mi_chat.activity.MessagesActivity;
 import com.afzaln.mi_chat.utils.NetUtils;
 import com.loopj.android.http.XmlHttpResponseHandler;
@@ -16,10 +17,12 @@ import org.w3c.dom.Node;
  */
 public class LogoutResponseHandler extends XmlHttpResponseHandler {
 
-    MessagesActivity mActivity;
+    Activity mActivity;
+    public ActivityFactory af;
 
     public LogoutResponseHandler(MessagesActivity activity) {
         mActivity = activity;
+        af =  ActivityFactory.getInstance();
     }
 
     @Override
@@ -33,7 +36,7 @@ public class LogoutResponseHandler extends XmlHttpResponseHandler {
         Node info = response.getElementsByTagName("info").item(0);
         if (info.getAttributes().getNamedItem("type").getNodeValue().equals("logout")) {
             NetUtils.getCookieStoreInstance(mActivity).clear();
-            Intent i = new Intent(mActivity, LoginActivity.class);
+            Intent i = new Intent(mActivity, af.getActivity("login"));
             mActivity.finish();
             mActivity.startActivity(i);
         };

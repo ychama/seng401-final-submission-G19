@@ -52,9 +52,10 @@ import java.util.Calendar;
 public class MessagesActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>, ActionMode.Callback {
 
     private static int mRefreshInterval = BackoffUtils.DEFAULT_REFRESH_INTERVAL;
-
+    private ActivityFactory af = ActivityFactory.getInstance();
     private static final int MESSAGE_LOADER = 0;
     private static final String TAG = MessagesActivity.class.getSimpleName();
+
 
     private boolean mManualRefresh = false;
     private MessagesCursorAdapter mAdapter;
@@ -71,6 +72,10 @@ public class MessagesActivity extends BaseActivity implements LoaderManager.Load
     private AlarmManager mAlarmManager;
     private PendingIntent mPendingIntent;
     private LogoutResponseHandler mLogoutResponseHandler = new LogoutResponseHandler(MessagesActivity.this);
+
+
+
+
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -97,7 +102,7 @@ public class MessagesActivity extends BaseActivity implements LoaderManager.Load
         getWindow().setBackgroundDrawable(null);
 
         if (!PrefUtils.authCookieExists(this)) {
-            Intent i = new Intent(MessagesActivity.this, LoginActivity.class);
+            Intent i = new Intent(MessagesActivity.this, af.getActivity("login"));
             this.finish();
             startActivity(i);
         }
@@ -273,7 +278,7 @@ public class MessagesActivity extends BaseActivity implements LoaderManager.Load
                 return true;
             case R.id.action_prefs:
                 sendAnalytics(this, "preferences");
-                i = new Intent(MessagesActivity.this, SettingsActivity.class);
+                i = new Intent(MessagesActivity.this, af.getActivity("settings"));
                 startActivity(i);
                 break;
             case R.id.action_clearmessages:
@@ -289,7 +294,7 @@ public class MessagesActivity extends BaseActivity implements LoaderManager.Load
                 break;
             case R.id.action_about:
                 sendAnalytics(this, "about");
-                i = new Intent(MessagesActivity.this, AboutActivity.class);
+                i = new Intent(MessagesActivity.this, af.getActivity("about"));
                 startActivity(i);
                 break;
         }
