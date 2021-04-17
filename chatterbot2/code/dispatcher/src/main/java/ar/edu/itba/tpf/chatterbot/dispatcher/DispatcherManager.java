@@ -28,6 +28,8 @@ public class DispatcherManager {
     
 
 
+    // added code start here for singleton design pattern
+
     private static DispatcherManager instance = null;
 
     private DispatcherManager()
@@ -41,10 +43,13 @@ public class DispatcherManager {
         {
 	   
             instance = new DispatcherManager();
-	    insntance.init();
+	    instance.init();
         }
         return instance;
     }
+
+    // added code ends here
+    // other file edited for singleton is chatterbot/code/dispatcher/src/main/webapp/WEB-INF/ springContext-beans.xml on line 34
 
 
     public void init() {
