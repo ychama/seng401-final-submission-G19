@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import opennlp.tools.lang.spanish.PosTagger;
-import opennlp.tools.lang.spanish.SentenceDetector;
-import opennlp.tools.lang.spanish.TokenChunker;
-import opennlp.tools.lang.spanish.Tokenizer;
+import opennlp.tools.lang.english.PosTagger;
+import opennlp.tools.lang.english.SentenceDetector;
+import opennlp.tools.lang.english.TokenChunker;
+import opennlp.tools.lang.english.Tokenizer;
 import opennlp.tools.namefind.NameFinderME;
 
 import org.apache.log4j.Logger;
@@ -30,7 +30,7 @@ import ar.edu.itba.tpf.chatterbot.model.WebServiceAction;
 /**
  * Implementación del servicio de chatterbot.
  */
-public class ChatterbotServiceImpl implements ChatterbotService {
+public class ChatterbotServiceImplEN implements ChatterbotService {
 
     private static final Logger logger = Logger.getLogger(ChatterbotServiceImpl.class);
 

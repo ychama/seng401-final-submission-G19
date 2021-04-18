@@ -15,7 +15,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import ar.edu.itba.tpf.chatterbot.model.PersistentEntity;
 
-@ContextConfiguration(locations = { "classpath:impl-data.xml", "classpath:impl-beans.xml" })
+@ContextConfiguration(locations = { "classpath:impl-data.xml", "classpath:impl-beansSP.xml" })
 @TransactionConfiguration(transactionManager = "transactionManager")
 public abstract class GenericDAOTest<T extends PersistentEntity> extends AbstractTransactionalJUnit4SpringContextTests {
 

@@ -27,10 +27,20 @@ public class StartUpDatabase {
 
     private ApplicationContext ctx;
 
-    public StartUpDatabase() {
-        ctx = new FileSystemXmlApplicationContext(new String[] { "../impl/src/main/resources/impl-data.xml",
-                "../impl/src/main/resources/impl-beans.xml", "src/main/webapp/WEB-INF/springContext-security.xml",
-                "src/main/webapp/WEB-INF/springContext-beans.xml" });
+    public StartUpDatabase(char language) {
+        
+        if(language == e)
+        {
+            ctx = new FileSystemXmlApplicationContext(new String[] { "../impl/src/main/resources/impl-data.xml",
+                    "../impl/src/main/resources/impl-beansEN.xml", "src/main/webapp/WEB-INF/springContext-security.xml",
+                    "src/main/webapp/WEB-INF/springContext-beans.xml" });
+        }
+        else
+        {
+            ctx = new FileSystemXmlApplicationContext(new String[] { "../impl/src/main/resources/impl-data.xml",
+                    "../impl/src/main/resources/impl-beansSP.xml", "src/main/webapp/WEB-INF/springContext-security.xml",
+                    "src/main/webapp/WEB-INF/springContext-beans.xml" });
+        }
 
     }
 
@@ -427,7 +437,10 @@ public class StartUpDatabase {
     }
 
     public static void main(String[] args) {
-        StartUpDatabase db = new StartUpDatabase();
+        
+        if(args.length == 0) System.exit(0);
+        
+        StartUpDatabase db = new StartUpDatabase(args[0].charAt(0));
 
         db.createSchemaFile("../schema.sql");
         db.loadUsers();

@@ -70,6 +70,7 @@
 
 				<!-- common configuration shared by all executions -->
 				<configuration>
+                    <languageArg>${languageArg}</languageArg>
 					<driver>oracle.jdbc.driver.OracleDriver</driver>
 					<url>jdbc:oracle:thin:@localhost:1521:ITBA</url>
 					<username>agregoir</username>
@@ -95,6 +96,9 @@
 					<mainClass>
 						ar.edu.itba.tpf.chatterbot.db.StartUpDatabase
 					</mainClass>
+                    <arguments>
+                        <argument>languageArg</argument>
+                    </arguments>
 				</configuration>
 			</plugin>
 		</plugins>

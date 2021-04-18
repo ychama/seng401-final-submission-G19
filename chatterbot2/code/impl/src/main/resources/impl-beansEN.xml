@@ -39,7 +39,7 @@
 		<property name="dispatcherURL" value="${chatterbot.dispatcherURL}" />
 	</bean>
 	<bean id="chatterbotService"
-		class="ar.edu.itba.tpf.chatterbot.service.ChatterbotServiceImpl">
+		class="ar.edu.itba.tpf.chatterbot.service.ChatterbotServiceImplEN">
 		<property name="treeNodeDAO" ref="treeNodeDAO" />
 		<property name="globalNodeDAO" ref="globalNodeDAO" />
 		<property name="baseActionDAO" ref="baseActionDAO" />

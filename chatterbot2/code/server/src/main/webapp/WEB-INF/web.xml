@@ -6,7 +6,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>	classpath:/impl-data.xml
-						classpath:/impl-beans.xml
+						classpath:/impl-beansSP.xml
 					 	/WEB-INF/springContext-beans.xml</param-value>
 	</context-param>
 
