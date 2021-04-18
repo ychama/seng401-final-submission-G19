@@ -259,20 +259,7 @@ public class Dispatcher {
                     return null;
                 }
 
-                /*
-                * Added code for prototype design pattern
-                */
-                if (clients.size() > 0) {
-
-                  Iterator<String> iterator = clients.keySet().iterator();
-                  String key = iterator.next();
-
-                  c = clients.get(key).clone();
-                  c.setServerState(bestServer);
-                }
-                else {
-                  c = new ClientState(bestServer);
-                }
+                c = new ClientState(bestServer);                
 
                 clients.put(user, c);
                 bestServer.incrementChatterbotCount();

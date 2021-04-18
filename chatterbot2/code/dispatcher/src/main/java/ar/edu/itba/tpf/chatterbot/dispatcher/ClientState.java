@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
  * Clase wrapper que contiene la ultima fecha de una conversación, y el servidor asociado.
  * Se utiliza como valor en la tabla de hash del dispatcher.
  */
-public class ClientState implements Cloneable {
+public class ClientState {
     private GregorianCalendar lastMessage;
     private ServerState serverState;
 
@@ -21,17 +21,6 @@ public class ClientState implements Cloneable {
         this.lastMessage = new GregorianCalendar();
         lastMessage.setTime(new Date());
     }
-
-    public Object clone () {
-      Object clone = null;
-      try {
-        clone = super.clone();
-      } catch (CloneNotSupportedException e) {
-        e.printStackTrace();
-      }
-      return clone;
-    }
-
 
     /**
      * @return Fecha y hora del mensaje más reciente.
