@@ -27,20 +27,11 @@ public class StartUpDatabase {
 
     private ApplicationContext ctx;
 
-    public StartUpDatabase(char language) {
-        
-        if(language == e)
-        {
-            ctx = new FileSystemXmlApplicationContext(new String[] { "../impl/src/main/resources/impl-data.xml",
-                    "../impl/src/main/resources/impl-beansEN.xml", "src/main/webapp/WEB-INF/springContext-security.xml",
-                    "src/main/webapp/WEB-INF/springContext-beans.xml" });
-        }
-        else
-        {
-            ctx = new FileSystemXmlApplicationContext(new String[] { "../impl/src/main/resources/impl-data.xml",
-                    "../impl/src/main/resources/impl-beansSP.xml", "src/main/webapp/WEB-INF/springContext-security.xml",
-                    "src/main/webapp/WEB-INF/springContext-beans.xml" });
-        }
+    public StartUpDatabase(String languageBeanFile) {
+
+        ctx = new FileSystemXmlApplicationContext(new String[] { "../impl/src/main/resources/impl-data.xml",
+                  languageBeanFile, "src/main/webapp/WEB-INF/springContext-security.xml",
+                  "src/main/webapp/WEB-INF/springContext-beans.xml" });
 
     }
 
@@ -415,18 +406,18 @@ public class StartUpDatabase {
         chatterbotService.persistBaseAction(new WebServiceAction("Consultar vencimiento de tarjeta de crédito",
                 "http://localhost:8081/chatterbot-business/clients?wsdl", "Clients", "consultarVencimientoTarjeta"));
     }
-    
+
     public void loadErrorLogs() {
         LoggingService loggingService = (LoggingService) ctx.getBean("loggingService");
-        
+
         ErrorLog errorLog;
-        
+
         errorLog = new ErrorLog("UncategorizedSQLException", "org.springframework.jdbc.UncategorizedSQLException: Hibernate operation: Cannot open connection; uncategorized SQLException for SQL [???]; SQL state [null]; error code [17002]; Io exception: The Network Adapter could not establish the connection; nested exception is java.sql.SQLException: Io exception: The Network Adapter could not establish the connection");
         loggingService.persistErrorLog(errorLog);
-        
-        
+
+
         errorLog = new ErrorLog("SQLException", "java.sql.SQLException: Io exception: The Network Adapter could not establish the connection " +
-                " at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:125) " + 
+                " at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:125) " +
                 " at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:162) " +
                 " at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:274)");
         loggingService.persistErrorLog(errorLog);
@@ -437,10 +428,10 @@ public class StartUpDatabase {
     }
 
     public static void main(String[] args) {
-        
+
         if(args.length == 0) System.exit(0);
-        
-        StartUpDatabase db = new StartUpDatabase(args[0].charAt(0));
+
+        StartUpDatabase db = LanguageFactory.getLanguage(args[0]);
 
         db.createSchemaFile("../schema.sql");
         db.loadUsers();
