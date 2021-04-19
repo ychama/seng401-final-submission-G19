@@ -190,8 +190,8 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 this.posTagger = new PosTagger(taggerFile);
             }
         } catch (IOException e) {
-            logger.error("Error al cargar los diccionarios.");
-            throw new ChatterbotServiceException("Error al cargar los diccionarios.", e);
+            logger.error("Error loading dictionaries.");
+            throw new ChatterbotServiceException("Error loading dictionaries.", e);
         }
 
         Collection<String> keywords = new ArrayList<String>();
