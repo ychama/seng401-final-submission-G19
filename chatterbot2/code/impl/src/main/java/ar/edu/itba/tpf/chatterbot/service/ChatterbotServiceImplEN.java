@@ -190,8 +190,8 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 this.posTagger = new PosTagger(taggerFile);
             }
         } catch (IOException e) {
-            logger.error("Error loading dictionaries.");
-            throw new ChatterbotServiceException("Error loading dictionaries.", e);
+            logger.error("Error al cargar los diccionarios.");
+            throw new ChatterbotServiceException("Error al cargar los diccionarios.", e);
         }
 
         Collection<String> keywords = new ArrayList<String>();
@@ -225,8 +225,8 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 }
             }
         } catch (Exception e) {
-            logger.error("Error processing message.");
-            throw new ChatterbotServiceException("Error processing message.", e);
+            logger.error("Error al procesar el mensaje.");
+            throw new ChatterbotServiceException("Error al procesar el mensaje.", e);
         }
         return keywords;
     }
@@ -250,8 +250,8 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 this.posTagger = new PosTagger(taggerFile);
             }
         } catch (IOException e) {
-            logger.error("Error loading dictionaries.");
-            throw new ChatterbotServiceException("Error loading dictionaries.", e);
+           logger.error("Error al cargar los diccionarios.");
+            throw new ChatterbotServiceException("Error al cargar los diccionarios.", e);
         }
 
         Collection<String> keywords = new ArrayList<String>();
@@ -282,8 +282,8 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 }
             }
         } catch (Exception e) {
-            logger.error("Error processing message.");
-            throw new ChatterbotServiceException("Error processing message.", e);
+            logger.error("Error al procesar el mensaje.");
+            throw new ChatterbotServiceException("Error al procesar el mensaje.", e);
         }
         return keywords;
     }
