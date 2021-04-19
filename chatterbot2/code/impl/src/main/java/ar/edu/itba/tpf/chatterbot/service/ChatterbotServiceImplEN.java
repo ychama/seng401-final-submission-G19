@@ -140,7 +140,7 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
 
         for (GlobalNode node : getGlobalNodes()) {
             float currentMatch = node.matchKeywords(keywords);
-            
+
             if (currentMatch > bestMatch) {
                 bestNode = node;
                 bestMatch = currentMatch;
@@ -174,14 +174,14 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
 
     /**
      * Obtiene las keywords de un mensaje del usuario, utilizando el framework de procesamiento de lenguaje natural.
-     * 
+     *
      * @param message Mensaje a procesar.
      * @return El conjunto de verbos y sustantivos del mensaje.
      */
     private Collection<String> getKeywords(String message) throws ChatterbotServiceException {
 
         message = message.toLowerCase();
-        
+
         try {
             if (this.tokenChunker == null) {
                 this.tokenChunker = new TokenChunker(chunkerFile);
@@ -225,23 +225,23 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 }
             }
         } catch (Exception e) {
-            logger.error("Error al procesar el mensaje.");
-            throw new ChatterbotServiceException("Error al procesar el mensaje.", e);
+            logger.error("Error processing message.");
+            throw new ChatterbotServiceException("Error processing message.", e);
         }
         return keywords;
     }
 
-    
+
     /**
      * Obtiene las keywords de un mensaje del usuario, utilizando el framework de procesamiento de lenguaje natural.
-     * 
+     *
      * @param message Mensaje a procesar.
      * @return El conjunto de verbos y sustantivos del mensaje.
      */
     private Collection<String> getAllKeywords(String message) throws ChatterbotServiceException {
 
         message = message.toLowerCase();
-        
+
         try {
             if (this.tokenChunker == null) {
                 this.tokenChunker = new TokenChunker(chunkerFile);
@@ -250,8 +250,8 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 this.posTagger = new PosTagger(taggerFile);
             }
         } catch (IOException e) {
-            logger.error("Error al cargar los diccionarios.");
-            throw new ChatterbotServiceException("Error al cargar los diccionarios.", e);
+            logger.error("Error loading dictionaries.");
+            throw new ChatterbotServiceException("Error loading dictionaries.", e);
         }
 
         Collection<String> keywords = new ArrayList<String>();
@@ -282,13 +282,13 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
                 }
             }
         } catch (Exception e) {
-            logger.error("Error al procesar el mensaje.");
-            throw new ChatterbotServiceException("Error al procesar el mensaje.", e);
+            logger.error("Error processing message.");
+            throw new ChatterbotServiceException("Error processing message.", e);
         }
         return keywords;
     }
-    
-    
+
+
     public TreeNode getTreeNodeByDescription(String description) {
         return treeNodeDAO.findTreeNodeByDescription(description);
     }
@@ -402,11 +402,11 @@ public class ChatterbotServiceImplEN implements ChatterbotService {
     // }
     public void removeTreeNode(TreeNode node) throws ChatterbotServiceException {
         if (node.equals(getRootNode())) {
-            throw new ChatterbotServiceException("No se puede eliminar el nodo raiz.", null);
+            throw new ChatterbotServiceException("Cannot delete root node.", null);
         } else {
             if (getErrorTransitionReferencesCount(node) > 0) {
                 throw new ChatterbotServiceException(
-                        "No se puede eliminar el nodo porque existen otros que lo referencian como transición de error.",
+                        "The node cannot be removed because there are others that refer to it as an error transition.",
                         null);
             } else {
                 InternalNode parent = node.getParent();
